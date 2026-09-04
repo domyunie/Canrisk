@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("📋 Usuarios registrados:", usuarios);
     alert(`¡Registro exitoso! Bienvenido, ${name} 🎉`);
 
-    const isEnglish = window.location.pathname.includes('/INGLES/');
-    window.location.href = isEnglish ? 'loginING.html' : 'login.html';
+    const isEnglish = window.location.pathname.includes("/INGLES/");
+    window.location.href = isEnglish ? "loginING.php" : "login.php";
   });
 
   function validarNombre(name) {
@@ -54,7 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function validarUsuario(usuario) {
     const regex = /^[a-zA-Z0-9_]{4,20}$/;
     if (!regex.test(usuario)) {
-      alert("El usuario debe tener entre 4 y 20 caracteres (letras, números o guión bajo).");
+      alert(
+        "El usuario debe tener entre 4 y 20 caracteres (letras, números o guión bajo).",
+      );
       usuarioInput.focus();
       return false;
     }

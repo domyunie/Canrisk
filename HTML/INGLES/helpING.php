@@ -1,0 +1,690 @@
+<?php
+session_start();
+if (!isset($_SESSION["userSession"])) {
+    $isEnglish   = strpos($_SERVER["REQUEST_URI"], "/INGLES/") !== false;
+    $redirectUrl = $isEnglish ? "LoginING.php" : "login.php";
+    
+    header("Location: " . $redirectUrl);
+    exit; 
+}
+
+$sesion    = $_SESSION["userSession"] ?? null;
+$isEnglish = strpos($_SERVER["REQUEST_URI"], "/INGLES/") !== false;
+?><!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help Center - Canrisk</title>
+    <link rel="stylesheet" href="../../CSS/Style-Info.css" />
+    <link rel="stylesheet" href="../../CSS/help.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../MULTIMEDIA/Canrisk LOGO.svg"
+    />
+  </head>
+  <body>
+    <!--  LOGO AND SIDEBAR TOGGLE BUTTON -->
+    <div class="navbar-brand">
+      <button
+        class="hamburger-sidebar-btn"
+        id="sidebarBtn"
+        aria-label="Open side menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <h1>Canrisk</h1>
+      <img src="../../MULTIMEDIA/Canrisk LOGO.svg" alt="Canrisk" class="C-L" />
+    </div>
+
+    <!--  SIDEBAR MENU -->
+    <nav class="sidebar-menu" id="sidebarMenu">
+      <div class="sidebar-decoracion">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul class="sidebar-list">
+        <li>
+          <a href="cancer-introING.php">Introduction to Cancer &rarr;</a>
+        </li>
+        <li><a href="CancerING.php">Cancer Types &rarr;</a></li>
+        <li><a href="psycho-helpING.php">Psychological Support &rarr;</a></li>
+        <li><a href="helpING.php">Help Center &rarr;</a></li>
+        <li><a href="quizzING.php">Quiz &rarr;</a></li>
+        <li><a href="faqING.php">Frequently Asked Questions &rarr;</a></li>
+      </ul>
+    </nav>
+
+    <!--  SIDEBAR DARK OVERLAY  -->
+    <div class="overlay-menu" id="menuOverlay"></div>
+
+    <!-- TOP NAVIGATION BAR  -->
+    <nav class="navbar" id="mainNav">
+      <button
+        class="hamburger"
+        id="hamburgerBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="Info-nav">
+        <li class="box-II">
+          <h4><a href="PrincipalING.php">Home Page</a></h4>
+        </li>
+        <li class="box-II">
+          <a href="aboutusENG.php"><h4>About Us</h4></a>
+        </li>
+        <li class="box-II">
+          <a href="ContactoING.php"><h4>Contact Us</h4></a>
+        </li>
+      </ul>
+
+      <div class="right-group">
+        <a
+          id="langSwitch"
+          class="lang-switch"
+          href="<?php echo $isEnglish ? '../Principal.php' : 'INGLES/PrincipalING.php'; ?>"
+          aria-label="Cambiar idioma / Switch language"
+          ><?php echo $isEnglish ? 'ES' : 'EN'; ?></a
+        >
+
+        <?php if ($sesion): ?>
+          <div class="Photo user-session">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+              />
+            </svg>
+            <div class="user-info">
+              <span class="session-label">
+                <?php echo $isEnglish ? 'Signed in as' : 'Sesión iniciada como'; ?>
+              </span>
+              <strong><?php echo htmlspecialchars($sesion['username'], ENT_QUOTES); ?></strong>
+              <a class="logout-link" href="../../PHP/logout.php">
+                <?php echo $isEnglish ? 'Log out' : 'Cerrar sesión'; ?>
+              </a>
+            </div>
+          </div>
+        <?php else: ?>
+          <div class="Photo">
+            <a
+              href="login.php"
+              aria-label="Iniciar sesión / Login"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                fill="currentColor"
+                class="bi bi-person-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path
+                  fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+                />
+              </svg>
+            </a>
+          </div>
+        <?php endif; ?>
+      </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="Titulos">
+      <br />
+      <h1>Help Center for People in Need</h1>
+    </div>
+    <br />
+
+    <div class="help-grid">
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=1'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona1.jpe" alt="Mateo Sebastián" />
+        </div>
+        <div class="help-info">
+          <h3>Mateo Sebastián</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Mateo Sebastián<br />
+            <strong>Age:</strong> 20 years old<br />
+            <strong>Type of cancer:</strong> Lymphoma<br />
+            <strong>Location:</strong> San Salvador, San Salvador<br />
+            <strong>Goal:</strong> Graduate professionally in music and
+            specialize in composition.<br />
+            <strong>Phone:</strong> +503 7123-4567
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $805/$1200</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 67%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=2'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona3.jpg" alt="Camila Valentina" />
+        </div>
+        <div class="help-info">
+          <h3>Camila Valentina</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Camila Valentina<br />
+            <strong>Age:</strong> 22 years old<br />
+            <strong>Type of cancer:</strong> Thyroid Cancer<br />
+            <strong>Location:</strong> Santa Tecla, La Libertad<br />
+            <strong>Goal:</strong> Study forensic medicine abroad to help
+            analyze complex cases.<br />
+            <strong>Phone:</strong> +503 7234-5678
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $2005/$2500</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 80%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=3'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona4.avif" alt="Valeria Sofía" />
+        </div>
+        <div class="help-info">
+          <h3>Valeria Sofía</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Valeria Sofía<br />
+            <strong>Age:</strong> 19 years old<br />
+            <strong>Type of cancer:</strong> Leukemia<br />
+            <strong>Location:</strong> Santa Ana, Santa Ana<br />
+            <strong>Goal:</strong> Study law in order to actively defend civil
+            rights.<br />
+            <strong>Phone:</strong> +503 7345-6789
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $1405/$2000</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=4'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona 2.avif" alt="Daniel Alejandro" />
+        </div>
+        <div class="help-info">
+          <h3>Daniel Alejandro</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Daniel Alejandro<br />
+            <strong>Age:</strong> 24 years old<br />
+            <strong>Type of cancer:</strong> Leukemia<br />
+            <strong>Location:</strong> San Miguel, San Miguel<br />
+            <strong>Goal:</strong> Cover travel and lodging costs to return home
+            for specialized medical treatment near his family.<br />
+            <strong>Phone:</strong> +503 7456-7890
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $2005/$3000</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 67%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=5'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona5.jpg" alt="Gabriela Marie" />
+        </div>
+        <div class="help-info">
+          <h3>Gabriela Marie</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Gabriela Marie<br />
+            <strong>Age:</strong> 21 years old<br />
+            <strong>Type of cancer:</strong> Breast Cancer<br />
+            <strong>Location:</strong> Antiguo Cuscatlán, La Libertad<br />
+            <strong>Goal:</strong> Finish her degree in Modern Languages and
+            work as a bilingual teacher.<br />
+            <strong>Phone:</strong> +503 7567-8901
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $950/$1500</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 63%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=6'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona6.webp" alt="Diego Fernando" />
+        </div>
+        <div class="help-info">
+          <h3>Diego Fernando</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Diego Fernando<br />
+            <strong>Age:</strong> 18 years old<br />
+            <strong>Type of cancer:</strong> Colon Cancer<br />
+            <strong>Location:</strong> Soyapango, San Salvador<br />
+            <strong>Goal:</strong> Become a Systems Engineer and create
+            accessible apps for oncology health.<br />
+            <strong>Phone:</strong> +503 7678-9012
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $1100/$2200</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 50%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=7'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona7.jpg" alt="Andrea Nicole" />
+        </div>
+        <div class="help-info">
+          <h3>Andrea Nicole</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Andrea Nicole<br />
+            <strong>Age:</strong> 23 years old<br />
+            <strong>Type of cancer:</strong> Skin Cancer<br />
+            <strong>Location:</strong> Ahuachapán, Ahuachapán<br />
+            <strong>Goal:</strong> Study Digital Graphic Design and illustrate
+            children's stories about overcoming adversity.<br />
+            <strong>Phone:</strong> +503 7789-0123
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $1800/$2000</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 90%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=8'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona8.avif" alt="Luis Carlos" />
+        </div>
+        <div class="help-info">
+          <h3>Luis Carlos</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Luis Carlos<br />
+            <strong>Age:</strong> 25 years old<br />
+            <strong>Type of cancer:</strong> Testicular Cancer<br />
+            <strong>Location:</strong> Sonsonate, Sonsonate<br />
+            <strong>Goal:</strong> Open his own workshop or local culinary
+            school to preserve traditional recipes.<br />
+            <strong>Phone:</strong> +503 7890-1234
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $1205/$1800</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 67%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=9'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona9.jpg" alt="Mariana Estefanía" />
+        </div>
+        <div class="help-info">
+          <h3>Mariana Estefanía</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Mariana Estefanía<br />
+            <strong>Age:</strong> 20 years old<br />
+            <strong>Type of cancer:</strong> Lymphoma<br />
+            <strong>Location:</strong> Cojutepeque, Cuscatlán<br />
+            <strong>Goal:</strong> Study Professional Nursing to provide
+            palliative care with dignity and empathy.<br />
+            <strong>Phone:</strong> +503 7901-2345
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $1600/$3200</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 50%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=10'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona10.jpe" alt="José Manuel" />
+        </div>
+        <div class="help-info">
+          <h3>José Manuel</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> José Manuel<br />
+            <strong>Age:</strong> 22 years old<br />
+            <strong>Type of cancer:</strong> Colon Cancer<br />
+            <strong>Location:</strong> San Vicente, San Vicente<br />
+            <strong>Goal:</strong> Finish his studies in Agronomy to implement
+            sustainable farming in his community.<br />
+            <strong>Phone:</strong> +503 7012-3456
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $2200/$4000</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 55%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=11'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona11.avif" alt="Elena Beatriz" />
+        </div>
+        <div class="help-info">
+          <h3>Elena Beatriz</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Elena Beatriz<br />
+            <strong>Age:</strong> 19 years old<br />
+            <strong>Type of cancer:</strong> Leukemia<br />
+            <strong>Location:</strong> Usulután, Usulután<br />
+            <strong>Goal:</strong> Study Psychology to offer support therapy to
+            families of oncology patients.<br />
+            <strong>Phone:</strong> +503 7111-2222
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $3400/$5000</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 68%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=12'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona12.avif" alt="Rodrigo André" />
+        </div>
+        <div class="help-info">
+          <h3>Rodrigo André</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Rodrigo André<br />
+            <strong>Age:</strong> 21 years old<br />
+            <strong>Type of cancer:</strong> Thyroid Cancer<br />
+            <strong>Location:</strong> Mejicanos, San Salvador<br />
+            <strong>Goal:</strong> Study Interior Architecture and design
+            accessible spaces for people with reduced mobility.<br />
+            <strong>Phone:</strong> +503 7222-3333
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $4100/$6000</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 68%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=13'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona13.avif" alt="Sofía Alejandra" />
+        </div>
+        <div class="help-info">
+          <h3>Sofía Alejandra</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Sofía Alejandra<br />
+            <strong>Age:</strong> 18 years old<br />
+            <strong>Type of cancer:</strong> Cervical Cancer<br />
+            <strong>Location:</strong> Chalatenango, Chalatenango<br />
+            <strong>Goal:</strong> Complete her degree in Early Childhood
+            Education to guide and support children's development.<br />
+            <strong>Phone:</strong> +503 7333-4444
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $1500/$2500</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 60%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=14'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona14.avif" alt="Carlos Eduardo" />
+        </div>
+        <div class="help-info">
+          <h3>Carlos Eduardo</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Carlos Eduardo<br />
+            <strong>Age:</strong> 23 years old<br />
+            <strong>Type of cancer:</strong> Lung Cancer<br />
+            <strong>Location:</strong> San Francisco Gotera, Morazán<br />
+            <strong>Goal:</strong> Study Investigative Journalism to amplify
+            social stories from marginalized communities.<br />
+            <strong>Phone:</strong> +503 7444-5555
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $2105/$3500</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 60%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="help-card"
+        onclick="window.location.href = 'help-detalle.php?id=15'"
+        style="cursor: pointer"
+      >
+        <div class="help-photo">
+          <img src="../../MULTIMEDIA/persona15.jpg" alt="Daniela Montserrat" />
+        </div>
+        <div class="help-info">
+          <h3>Daniela Montserrat</h3>
+          <div class="help-desc">
+            <strong>Name:</strong> Daniela Montserrat<br />
+            <strong>Age:</strong> 20 years old<br />
+            <strong>Type of cancer:</strong> Skin Cancer<br />
+            <strong>Location:</strong> La Unión, La Unión<br />
+            <strong>Goal:</strong> Study Veterinary Medicine and found a shelter
+            for animals in need.<br />
+            <strong>Phone:</strong> +503 7555-6666
+          </div>
+          <div class="progress-container">
+            <span class="progress-text">Funds raised: $1850/$3000</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 61%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <h2 class="Title">COPYRIGHT</h2>
+            <ul class="Advice">
+              <li>&copy; Canrisk 2026</li>
+              <li>&copy; All rights reserved to the Canrisk team</li>
+              <li>Special thanks to the Canrisk team</li>
+              <li>who have made this page possible.</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h2 class="Title_1">IMPORTANT INFORMATION</h2>
+            <ul class="Advice_1">
+              <li>
+                This page DOES NOT replace the help of a medical professional.
+              </li>
+              <li>
+                In case you have any type of emergency or a symptom you can
+              </li>
+              <li>rely on the different numbers of hospitals that we</li>
+              <li>we provide, or call 911 directly.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-social">
+          <h2 class="Title_2">Canrisk social networks!</h2>
+          <ul class="Social">
+            <li>
+              <a href="https://www.instagram.com/canrisk/" target="_blank"
+                ><img
+                  src="../../MULTIMEDIA/instagram.png"
+                  class="Inst-IMG"
+                  alt="Instagram logo"
+                />
+                <p class="Inst-txt">Instagram</p></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/Canrisk-110882646091155"
+                target="_blank"
+                ><img
+                  src="../../MULTIMEDIA/facebook.png"
+                  class="Face-IMG"
+                  alt="Facebook logo"
+                />
+                <p class="Face-txt">Facebook</p></a
+              >
+            </li>
+            <li>
+              <a href="https://twitter.com/Canrisk1" target="_blank"
+                ><img
+                  src="../../MULTIMEDIA/gorjeo.png"
+                  class="Twit-IMG"
+                  alt="Twitter"
+                />
+                <p class="Twit-txt">Twitter</p></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById("hamburgerBtn");
+      const nav = document.getElementById("mainNav");
+
+      btn.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        btn.classList.toggle("open", isOpen);
+        btn.setAttribute("aria-expanded", isOpen);
+      });
+
+      const sidebarBtn = document.getElementById("sidebarBtn");
+      const sidebarMenu = document.getElementById("sidebarMenu");
+      const menuOverlay = document.getElementById("menuOverlay");
+
+      const toggleSidebar = () => {
+        const isOpen = sidebarMenu.classList.toggle("open");
+        sidebarBtn.classList.toggle("open", isOpen);
+        menuOverlay.classList.toggle("show", isOpen);
+      };
+
+      sidebarBtn.addEventListener("click", toggleSidebar);
+      menuOverlay.addEventListener("click", toggleSidebar);
+    </script>
+
+    <script src="../../JS/site.js" defer></script>
+    <script src="../../JS/personasdata.js" defer></script>
+  </body>
+</html>

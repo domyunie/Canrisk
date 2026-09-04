@@ -1,36 +1,59 @@
 <?php
 session_start();
+//Verificar si la sesion esta iniciada
+if (isset($_SESSION["userSession"])) {
+    $isEnglish   = strpos($_SERVER["REQUEST_URI"], "/INGLES/") !== false;
+    $redirectUrl = $isEnglish ? "PrincipalING.php" : "Principal.php";
+    
+    header("Location: " . $redirectUrl);
+    exit; 
+}
+
+require __DIR__ . '/../../PHP/conexion.php';
+
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = trim($_POST["usuario"]);
-    $contrasena = $_POST["contrasena"];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $usuario    = trim($_POST["usuario"] ?? "");
+    $contrasena = $_POST["contrasena"] ?? "";
 
+    // Verificamos directamente si los campos requeridos están vacíos
     if (empty($usuario) || empty($contrasena)) {
-        $error = "Usuario y contraseña requeridos";
+        $error = "Usuario y contraseña son obligatorios.";
     } else {
-        $usersFile = 'users.json';
-        $usuarios = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
+        
+        /* ---------- 2. Buscar el usuario de forma segura ---------- */
+        $stmt = $conectar->prepare(
+            "SELECT id, nombre, usuario, contrasena FROM usuarios WHERE usuario = ? LIMIT 1"
+        );
+        $stmt->bind_param("s", $usuario);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $fila = $resultado->fetch_assoc();
+        $stmt->close();
 
-        $foundUser = false;
-        foreach ($usuarios as $u) {
-            if ($u['usuario'] === $usuario && $u['contrasena'] === $contrasena) {
-                $foundUser = true;
-                break;
-            }
-        }
+        /* ---------- 3. Verificar hash y crear sesión ---------- */
+        if ($fila && password_verify($contrasena, $fila["contrasena"])) {
+            
+            // Seguridad de sesión
+            session_regenerate_id(true);
+            $_SESSION["userSession"] = [
+                "type"     => "users",
+                "id"       => (int) $fila["id"],
+                "username" => $fila["usuario"],
+                "nombre"   => $fila["nombre"],
+            ];
 
-        if ($foundUser) {
-            // Reemplazo del localStorage de Login.js
-            $_SESSION['userSession'] = ['type' => 'users', 'username' => $usuario];
-            
-            $isEnglish = strpos($_SERVER['REQUEST_URI'], '/INGLES/') !== false;
-            $redirectUrl = $isEnglish ? 'PrincipalING.html' : 'Principal.html';
-            
-            header("Location: $redirectUrl");
+            $isEnglish   = strpos($_SERVER["REQUEST_URI"], "/INGLES/") !== false;
+            // NOTA: Principal.php / PrincipalING.php deben renombrarse a .php
+            // para poder leer $_SESSION y mostrar el estado de sesión.
+            $redirectUrl = $isEnglish ? "PrincipalING.php" : "Principal.php";
+
+            header("Location: " . $redirectUrl);
             exit;
         } else {
-            $error = "Credenciales inválidas";
+            // Error genérico si falla el usuario o la contraseña
+            $error = "Usuario o contraseña incorrectos.";
         }
     }
 }
@@ -45,20 +68,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="icon" type="image/png" href="../../MULTIMEDIA/Canrisk LOGO.svg">
 </head>
 <body>
-    <?php if(!empty($error)) echo "<script>alert('$error');</script>"; ?>
-
     <div class="form">
         <a class="auth-brand" href="Principal.php">
             <img src="../../MULTIMEDIA/Canrisk LOGO.svg" alt="Canrisk">
             <span>Canrisk</span>
         </a>
-        <form action="" method="POST">
+        <form action="" method="POST" novalidate>
             <h1>Iniciar Sesión</h1>
+            <?php if (!empty($error)): ?>
+                <div class="auth-error" role="alert"><?php echo htmlspecialchars($error, ENT_QUOTES); ?></div>
+            <?php endif; ?>
             <span class="auth-subtitle">Ingresa tus datos para continuar</span>
 
             <div class="field-group">
                 <label class="User-text" for="usuario">Usuario:</label>
-                <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario" class="username" required>
+                <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario" class="username"
+                       value="<?php echo htmlspecialchars($_POST['usuario'] ?? '', ENT_QUOTES); ?>"
+                       maxlength="20" required>
             </div>
 
             <div class="field-group">
@@ -77,5 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </form>
     </div>
+
+    <script src="../../JS/auth-validacion.js"></script>
 </body>
 </html>

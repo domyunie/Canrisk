@@ -1,0 +1,154 @@
+/* ============================================================
+   CANRISK — faq.css
+   Estilos específicos para Preguntas Frecuentes
+   ============================================================ */
+
+.faq-section {
+  max-width: 950px;
+  margin: 2.5rem auto 3rem;
+  padding: 0 1.2rem;
+}
+
+.faq-search-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.2rem;
+}
+
+.faq-search {
+  width: 100%;
+  max-width: 480px;
+  padding: 0.75rem 1.2rem;
+  border: 2px solid #a83862;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  outline: none;
+  color: #333;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.faq-search:focus {
+  border-color: #8a2c4d;
+  box-shadow: 0 0 0 3px rgba(168, 56, 98, 0.2);
+}
+
+.faq-search::placeholder {
+  color: #aaa;
+}
+
+.faq-category {
+  margin-bottom: 2.4rem;
+}
+
+.faq-category h2 {
+  color: #a83862;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid #f0c2d1;
+  padding-bottom: 0.5rem;
+}
+
+/* Elemento colapsable con animación y comportamiento unificado */
+.faq-item {
+  background: #ffffff;
+  border: 1px solid #eed4dd;
+  border-radius: 12px;
+  margin-bottom: 0.7rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(182, 64, 118, 0.05);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-item[open] {
+  border-color: #eec1d5;
+  box-shadow: 0 4px 14px rgba(182, 64, 118, 0.1);
+}
+
+.faq-item summary {
+  padding: 1rem 1.3rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #3c2a35;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  user-select: none;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #a83862;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fdf3f7;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+  background-color: #a83862;
+  color: #ffffff;
+}
+
+.faq-item summary:hover {
+  background-color: #fff8fb;
+}
+
+.faq-item[open] summary {
+  border-bottom: 1px solid #f0d8e0;
+  background-color: #fff8fb;
+}
+
+.faq-answer {
+  padding: 1rem 1.3rem 1.2rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #555;
+  animation: faqSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes faqSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faq-no-results {
+  text-align: center;
+  color: #999;
+  font-size: 0.88rem;
+  padding: 2rem 0;
+  display: none;
+}
+
+.faq-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: -1.6rem;
+  margin-bottom: 2rem;
+}

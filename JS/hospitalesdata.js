@@ -1,168 +1,252 @@
-// Datos de los hospitales para la página Contacto-Detalle.html
+// Datos de los hospitales para la página Contacto-Detalle.php
 const hospitalesData = [
-    {
-        id: 1,
-        nombre: "Hospital de Oncología ISSS",
-        telefono: "2591-5400",
-        ubicacion: "San Salvador",
-        horario: "Servicio las 24 horas.",
-        descripcion: "El Hospital Médico Quirúrgico y Oncológico del ISSS es el principal centro de referencia para pacientes derechohabientes del Seguro Social que padecen cáncer. Cuenta con equipo especializado para quimioterapia, radioterapia y cirugía oncológica.",
-        imagen: "../../MULTIMEDIA/ISS.jpg", // Puedes cambiar esta imagen en el futuro
-        servicios: ["Quimioterapia", "Radioterapia", "Cirugía Oncológica", "Cuidados Paliativos"],
-        calificacion: 4.5
-    },
-    {
-        id: 2,
-        nombre: "Hospital Nacional Rosales",
-        telefono: "2231-9200",
-        ubicacion: "San Salvador",
-        horario: "Servicio las 24 horas.",
-        descripcion: "El principal hospital público de tercer nivel en El Salvador. Ofrece atención oncológica a la población general que no cuenta con seguro social, realizando diagnósticos, intervenciones quirúrgicas y tratamientos sistémicos.",
-        imagen: "../../MULTIMEDIA/Nuevo_Hospital_Rosales.jpg",
-        servicios: ["Atención Oncológica General", "Cirugía Mayor", "Clínica del Dolor", "Exámenes de Laboratorio Avanzados"],
-        calificacion: 4.2
-    },
-    {
-        id: 3,
-        nombre: "Hospital de Niños Benjamín Bloom",
-        telefono: "2594-4000",
-        ubicacion: "San Salvador",
-        horario: "Servicio las 24 horas.",
-        descripcion: "El centro nacional de referencia para pacientes pediátricos (niños). Cuenta con un pabellón especializado en oncología pediátrica, ofreciendo atención integral, psicológica y médica a niños con cáncer como la leucemia.",
-        imagen: "../../MULTIMEDIA/Hospital_Nacional_de_Niños_Benjamin_Bloom.jpg",
-        servicios: ["Oncología Pediátrica", "Apoyo Psicológico Infantil", "Quimioterapia Pediátrica", "Ludoteca"],
-        calificacion: 4.8
-    },
-    {
-        id: 4,
-        nombre: "Hospital Nacional de la Mujer",
-        telefono: "2565-2100",
-        ubicacion: "San Salvador",
-        horario: "Servicio las 24 horas.",
-        descripcion: "Especializado en la atención integral de la mujer. Cuenta con áreas específicas para la prevención, diagnóstico precoz y tratamiento de cánceres femeninos como el cáncer de mama, cáncer cervicouterino y de ovarios.",
-        imagen: "../../MULTIMEDIA/Hospital de la mujer.jpg",
-        servicios: ["Mamografías", "Colposcopía", "Oncología Ginecológica", "Cirugía Mamaria"],
-        calificacion: 4.6
-    },
-    {
-        id: 5,
-        nombre: "Instituto del Cáncer de El Salvador",
-        telefono: "2225-4354",
-        ubicacion: "San Salvador",
-        horario: "Servicio Lun - Vie: 7:00 AM - 4:00 PM",
-        descripcion: "Una institución especializada dedicada exclusivamente a la investigación, prevención y tratamiento integral de todos los tipos de cáncer en adultos. Cuenta con programas de apoyo y prevención.",
-        imagen: "../../MULTIMEDIA/Instituyo del Cáncer.jpg",
-        servicios: ["Oncología Médica", "Radioterapia", "Detección Temprana", "Apoyo Social"],
-        calificacion: 4.7
-    },
-    {
-        id: 6,
-        nombre: "Hospital Nacional San Juan de Dios de Santa Ana",
-        telefono: "2484-0300",
-        ubicacion: "Santa Ana",
-        horario: "Servicio las 24 horas.",
-        descripcion: "El principal centro hospitalario de la zona occidental. Brinda atención médica especializada y seguimiento a pacientes oncológicos de los departamentos de occidente sin necesidad de viajar a San Salvador.",
-        imagen: "../../MULTIMEDIA/San Juan de Dios SANTA ANA.jpg",
-        servicios: ["Diagnóstico", "Cirugía General", "Exámenes de Imagen", "Seguimiento Clínico"],
-        calificacion: 4.3
-    },
-    {
-        id: 7,
-        nombre: "Hospital Nacional San Juan de Dios de San Miguel",
-        telefono: "2684-2700",
-        ubicacion: "San Miguel",
-        horario: "Servicio las 24 horas.",
-        descripcion: "Hospital de referencia para toda la zona oriental de El Salvador. Ofrece servicios de detección temprana, cirugía y algunos tratamientos oncológicos ambulatorios para la población de oriente.",
-        imagen: "../../MULTIMEDIA/San Juan de Dios San Miguel.jpg",
-        servicios: ["Cirugía Mayor", "Detección Temprana", "Exámenes Clínicos", "Cuidados Especiales"],
-        calificacion: 4.4
-    },
-    {
-        id: 8,
-        nombre: "Hospital Médico Quirúrgico ISSS",
-        telefono: "2591-4100",
-        ubicacion: "San Salvador",
-        horario: "Servicio las 24 horas.",
-        descripcion: "Parte integral de la red de atención oncológica del ISSS, donde se realizan cirugías complejas de resección de tumores y se brindando cuidado intensivo postoperatorio.",
-        imagen: "../../MULTIMEDIA/Hospital General ISSS.jpg",
-        servicios: ["Cirugías Complejas", "Cuidados Intensivos", "Quirófanos Especializados", "Atención Postoperatoria"],
-        calificacion: 4.5
-    },
-    {
-        id: 9,
-        nombre: "Hospital Regional ISSS Santa Ana",
-        telefono: "2489-1400",
-        ubicacion: "Santa Ana",
-        horario: "Servicio las 24 horas.",
-        descripcion: "Centro regional del Seguro Social que atiende a pacientes oncológicos derechohabientes del occidente del país, brindando servicios de consulta externa especializada y aplicación de ciertos tratamientos.",
-        imagen: "../../MULTIMEDIA/Hospital Regional ISSS Santa Ana.jpg",
-        servicios: ["Consulta Externa Oncológica", "Laboratorio", "Atención Médica Especializada"],
-        calificacion: 4.3
-    },
-    {
-        id: 10,
-        nombre: "Hospital Regional ISSS San Miguel",
-        telefono: "2665-1200",
-        ubicacion: "San Miguel",
-        horario: "Servicio las 24 horas.",
-        descripcion: "El principal hospital del ISSS en la zona oriental. Facilita la atención, diagnóstico y tratamiento de pacientes con cáncer sin que tengan que desplazarse largas distancias hacia la capital.",
-        imagen: "../../MULTIMEDIA/Hospital Regional ISSS San Miguel.jpg",
-        servicios: ["Imágenes Médicas", "Cirugía Ambulatoria", "Farmacia Especializada"],
-        calificacion: 4.2
-    },
-    {
-        id: 11,
-        nombre: "Hospital Nacional General Masferrer",
-        telefono: "2609-0100",
-        ubicacion: "Usulután",
-        horario: "Servicio las 24 horas.",
-        descripcion: "Hospital departamental que brinda los primeros servicios de atención, detección oportuna y referenciación de pacientes con sospechas o diagnóstico de cáncer en la región de Usulután.",
-        imagen: "../../MULTIMEDIA/Hospital Nacional General Masferrer.jpg",
-        servicios: ["Exámenes de Rutina", "Referenciación Médica", "Medicina General"],
-        calificacion: 4.1
-    },
-    {
-        id: 12,
-        nombre: "Hospital General ISSS",
-        telefono: "2591-2100",
-        ubicacion: "San Salvador",
-        horario: "Servicio las 24 horas.",
-        descripcion: "Uno de los principales centros del Seguro Social, apoyando en diagnósticos por imágenes, biopsias y evaluaciones iniciales de patologías oncológicas.",
-        imagen: "../../MULTIMEDIA/Hospital General ISSS.jpg",
-        servicios: ["Tomografías", "Endoscopías", "Biopsias", "Consulta de Especialidades"],
-        calificacion: 4.4
-    },
-    {
-        id: 13,
-        nombre: "Hospital Nacional San Rafael",
-        telefono: "2523-9700",
-        ubicacion: "Santa Tecla",
-        horario: "Servicio las 24 horas.",
-        descripcion: "Ubicado en Santa Tecla, ofrece servicios médicos, quirúrgicos y de apoyo diagnóstico, siendo un bastión importante en la red pública de salud del departamento de La Libertad.",
-        imagen: "../../MULTIMEDIA/Hospital Nacional San Rafael.jpg",
-        servicios: ["Cirugía General", "Unidad de Cuidados Intensivos", "Exámenes Diagnósticos"],
-        calificacion: 4.3
-    },
-    {
-        id: 14,
-        nombre: "Hospital Policlínico Zacamil ISSS",
-        telefono: "2591-6600",
-        ubicacion: "Mejicanos",
-        horario: "Servicio las 24 horas.",
-        descripcion: "Centro de atención del ISSS en la zona norte de San Salvador, que colabora en el despistaje (screening) y atención temprana de diversas enfermedades, incluido el cáncer.",
-        imagen: "../../MULTIMEDIA/Hospital Policlínico Zacamil ISSS.jpg",
-        servicios: ["Consulta Externa", "Medicina Preventiva", "Laboratorio Clínico"],
-        calificacion: 4.2
-    },
-    {
-        id: 15,
-        nombre: "Hospital Nacional Santa Teresa",
-        telefono: "2362-4300",
-        ubicacion: "Zacatecoluca",
-        horario: "Servicio las 24 horas.",
-        descripcion: "Hospital de referencia para el departamento de La Paz, facilitando la identificación temprana, primeros niveles de atención y cuidados paliativos para pacientes locales.",
-        imagen: "../../MULTIMEDIA/Hospital Nacional Santa Teresa.jpg",
-        servicios: ["Medicina Interna", "Cuidados Paliativos Básicos", "Laboratorio"],
-        calificacion: 4.1
-    }
+  {
+    id: 1,
+    nombre: "Hospital de Oncología ISSS",
+    telefono: "2591-5400",
+    ubicacion: "San Salvador",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "El Hospital Médico Quirúrgico y Oncológico del ISSS es el principal centro de referencia para pacientes derechohabientes del Seguro Social que padecen cáncer. Cuenta con equipo especializado para quimioterapia, radioterapia y cirugía oncológica.",
+    imagen: "../../MULTIMEDIA/ISS.jpg", // Puedes cambiar esta imagen en el futuro
+    servicios: [
+      "Quimioterapia",
+      "Radioterapia",
+      "Cirugía Oncológica",
+      "Cuidados Paliativos",
+    ],
+    calificacion: 4.5,
+  },
+  {
+    id: 2,
+    nombre: "Hospital Nacional Rosales",
+    telefono: "2231-9200",
+    ubicacion: "San Salvador",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "El principal hospital público de tercer nivel en El Salvador. Ofrece atención oncológica a la población general que no cuenta con seguro social, realizando diagnósticos, intervenciones quirúrgicas y tratamientos sistémicos.",
+    imagen: "../../MULTIMEDIA/Nuevo_Hospital_Rosales.jpg",
+    servicios: [
+      "Atención Oncológica General",
+      "Cirugía Mayor",
+      "Clínica del Dolor",
+      "Exámenes de Laboratorio Avanzados",
+    ],
+    calificacion: 4.2,
+  },
+  {
+    id: 3,
+    nombre: "Hospital de Niños Benjamín Bloom",
+    telefono: "2594-4000",
+    ubicacion: "San Salvador",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "El centro nacional de referencia para pacientes pediátricos (niños). Cuenta con un pabellón especializado en oncología pediátrica, ofreciendo atención integral, psicológica y médica a niños con cáncer como la leucemia.",
+    imagen: "../../MULTIMEDIA/Hospital_Nacional_de_Niños_Benjamin_Bloom.jpg",
+    servicios: [
+      "Oncología Pediátrica",
+      "Apoyo Psicológico Infantil",
+      "Quimioterapia Pediátrica",
+      "Ludoteca",
+    ],
+    calificacion: 4.8,
+  },
+  {
+    id: 4,
+    nombre: "Hospital Nacional de la Mujer",
+    telefono: "2565-2100",
+    ubicacion: "San Salvador",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "Especializado en la atención integral de la mujer. Cuenta con áreas específicas para la prevención, diagnóstico precoz y tratamiento de cánceres femeninos como el cáncer de mama, cáncer cervicouterino y de ovarios.",
+    imagen: "../../MULTIMEDIA/Hospital de la mujer.jpg",
+    servicios: [
+      "Mamografías",
+      "Colposcopía",
+      "Oncología Ginecológica",
+      "Cirugía Mamaria",
+    ],
+    calificacion: 4.6,
+  },
+  {
+    id: 5,
+    nombre: "Instituto del Cáncer de El Salvador",
+    telefono: "2225-4354",
+    ubicacion: "San Salvador",
+    horario: "Servicio Lun - Vie: 7:00 AM - 4:00 PM",
+    descripcion:
+      "Una institución especializada dedicada exclusivamente a la investigación, prevención y tratamiento integral de todos los tipos de cáncer en adultos. Cuenta con programas de apoyo y prevención.",
+    imagen: "../../MULTIMEDIA/Instituyo del Cáncer.jpg",
+    servicios: [
+      "Oncología Médica",
+      "Radioterapia",
+      "Detección Temprana",
+      "Apoyo Social",
+    ],
+    calificacion: 4.7,
+  },
+  {
+    id: 6,
+    nombre: "Hospital Nacional San Juan de Dios de Santa Ana",
+    telefono: "2484-0300",
+    ubicacion: "Santa Ana",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "El principal centro hospitalario de la zona occidental. Brinda atención médica especializada y seguimiento a pacientes oncológicos de los departamentos de occidente sin necesidad de viajar a San Salvador.",
+    imagen: "../../MULTIMEDIA/San Juan de Dios SANTA ANA.jpg",
+    servicios: [
+      "Diagnóstico",
+      "Cirugía General",
+      "Exámenes de Imagen",
+      "Seguimiento Clínico",
+    ],
+    calificacion: 4.3,
+  },
+  {
+    id: 7,
+    nombre: "Hospital Nacional San Juan de Dios de San Miguel",
+    telefono: "2684-2700",
+    ubicacion: "San Miguel",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "Hospital de referencia para toda la zona oriental de El Salvador. Ofrece servicios de detección temprana, cirugía y algunos tratamientos oncológicos ambulatorios para la población de oriente.",
+    imagen: "../../MULTIMEDIA/San Juan de Dios San Miguel.jpg",
+    servicios: [
+      "Cirugía Mayor",
+      "Detección Temprana",
+      "Exámenes Clínicos",
+      "Cuidados Especiales",
+    ],
+    calificacion: 4.4,
+  },
+  {
+    id: 8,
+    nombre: "Hospital Médico Quirúrgico ISSS",
+    telefono: "2591-4100",
+    ubicacion: "San Salvador",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "Parte integral de la red de atención oncológica del ISSS, donde se realizan cirugías complejas de resección de tumores y se brindando cuidado intensivo postoperatorio.",
+    imagen: "../../MULTIMEDIA/Hospital General ISSS.jpg",
+    servicios: [
+      "Cirugías Complejas",
+      "Cuidados Intensivos",
+      "Quirófanos Especializados",
+      "Atención Postoperatoria",
+    ],
+    calificacion: 4.5,
+  },
+  {
+    id: 9,
+    nombre: "Hospital Regional ISSS Santa Ana",
+    telefono: "2489-1400",
+    ubicacion: "Santa Ana",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "Centro regional del Seguro Social que atiende a pacientes oncológicos derechohabientes del occidente del país, brindando servicios de consulta externa especializada y aplicación de ciertos tratamientos.",
+    imagen: "../../MULTIMEDIA/Hospital Regional ISSS Santa Ana.jpg",
+    servicios: [
+      "Consulta Externa Oncológica",
+      "Laboratorio",
+      "Atención Médica Especializada",
+    ],
+    calificacion: 4.3,
+  },
+  {
+    id: 10,
+    nombre: "Hospital Regional ISSS San Miguel",
+    telefono: "2665-1200",
+    ubicacion: "San Miguel",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "El principal hospital del ISSS en la zona oriental. Facilita la atención, diagnóstico y tratamiento de pacientes con cáncer sin que tengan que desplazarse largas distancias hacia la capital.",
+    imagen: "../../MULTIMEDIA/Hospital Regional ISSS San Miguel.jpg",
+    servicios: [
+      "Imágenes Médicas",
+      "Cirugía Ambulatoria",
+      "Farmacia Especializada",
+    ],
+    calificacion: 4.2,
+  },
+  {
+    id: 11,
+    nombre: "Hospital Nacional General Masferrer",
+    telefono: "2609-0100",
+    ubicacion: "Usulután",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "Hospital departamental que brinda los primeros servicios de atención, detección oportuna y referenciación de pacientes con sospechas o diagnóstico de cáncer en la región de Usulután.",
+    imagen: "../../MULTIMEDIA/Hospital Nacional General Masferrer.jpg",
+    servicios: [
+      "Exámenes de Rutina",
+      "Referenciación Médica",
+      "Medicina General",
+    ],
+    calificacion: 4.1,
+  },
+  {
+    id: 12,
+    nombre: "Hospital General ISSS",
+    telefono: "2591-2100",
+    ubicacion: "San Salvador",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "Uno de los principales centros del Seguro Social, apoyando en diagnósticos por imágenes, biopsias y evaluaciones iniciales de patologías oncológicas.",
+    imagen: "../../MULTIMEDIA/Hospital General ISSS.jpg",
+    servicios: [
+      "Tomografías",
+      "Endoscopías",
+      "Biopsias",
+      "Consulta de Especialidades",
+    ],
+    calificacion: 4.4,
+  },
+  {
+    id: 13,
+    nombre: "Hospital Nacional San Rafael",
+    telefono: "2523-9700",
+    ubicacion: "Santa Tecla",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "Ubicado en Santa Tecla, ofrece servicios médicos, quirúrgicos y de apoyo diagnóstico, siendo un bastión importante en la red pública de salud del departamento de La Libertad.",
+    imagen: "../../MULTIMEDIA/Hospital Nacional San Rafael.jpg",
+    servicios: [
+      "Cirugía General",
+      "Unidad de Cuidados Intensivos",
+      "Exámenes Diagnósticos",
+    ],
+    calificacion: 4.3,
+  },
+  {
+    id: 14,
+    nombre: "Hospital Policlínico Zacamil ISSS",
+    telefono: "2591-6600",
+    ubicacion: "Mejicanos",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "Centro de atención del ISSS en la zona norte de San Salvador, que colabora en el despistaje (screening) y atención temprana de diversas enfermedades, incluido el cáncer.",
+    imagen: "../../MULTIMEDIA/Hospital Policlínico Zacamil ISSS.jpg",
+    servicios: [
+      "Consulta Externa",
+      "Medicina Preventiva",
+      "Laboratorio Clínico",
+    ],
+    calificacion: 4.2,
+  },
+  {
+    id: 15,
+    nombre: "Hospital Nacional Santa Teresa",
+    telefono: "2362-4300",
+    ubicacion: "Zacatecoluca",
+    horario: "Servicio las 24 horas.",
+    descripcion:
+      "Hospital de referencia para el departamento de La Paz, facilitando la identificación temprana, primeros niveles de atención y cuidados paliativos para pacientes locales.",
+    imagen: "../../MULTIMEDIA/Hospital Nacional Santa Teresa.jpg",
+    servicios: [
+      "Medicina Interna",
+      "Cuidados Paliativos Básicos",
+      "Laboratorio",
+    ],
+    calificacion: 4.1,
+  },
 ];

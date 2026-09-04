@@ -1,0 +1,97 @@
+/* ============================================================
+   CANRISK — quizz.css
+   Estilos específicos para el Cuestionario y Concientización
+   ============================================================ */
+
+strong, b {
+  color: #a83862;
+}
+
+.info-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between !important;
+  align-items: stretch !important;
+  gap: 15px !important;
+  width: 100% !important;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: hidden !important;
+  padding: 10px 0;
+  box-sizing: border-box !important;
+}
+
+.info-grid .info-card {
+  flex: 1 1 0px !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.awareness-banner {
+  max-width: 1100px;
+  margin: 3.5rem auto;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #fdf5f7 100%);
+  border: 1px solid #eed4dd;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.awareness-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.awareness-header h2 {
+  color: #a83862;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.awareness-header p {
+  color: #666;
+  font-size: 0.9rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.stat-box {
+  flex: 1 1 280px;
+  max-width: 330px;
+  background: #ffffff;
+  border-left: 4px solid #a83862;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #a83862;
+  margin-bottom: 0.3rem;
+}
+
+.stat-box h4 {
+  font-size: 1rem;
+  color: #a83862;
+  margin-bottom: 0.4rem;
+}
+
+.stat-box p {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.45;
+  margin: 0;
+}

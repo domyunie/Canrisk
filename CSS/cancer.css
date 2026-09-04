@@ -1,0 +1,511 @@
+/* ============================================================
+   CANRISK — cancer.css
+   Estilos específicos para Información sobre el Cáncer y Tipos de Cáncer
+   ============================================================ */
+
+/* --- 1. SECCIÓN PRINCIPAL Y PESTAÑAS --- */
+.cancer-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px 60px;
+}
+
+.cancer-intro {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.cancer-intro h2 {
+  color: #b23d74;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.cancer-intro p {
+  color: #715c68;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cancer-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid #f4d3e2;
+  padding-bottom: 14px;
+}
+
+.tab-link {
+  text-decoration: none;
+  color: #715c68;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  font-weight: 700;
+  font-size: 0.98rem;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab-link:hover,
+.tab-link.active {
+  color: #b23d74;
+}
+
+.tab-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background-color: #d65a94;
+}
+
+.cancer-section {
+  display: none;
+  margin-bottom: 46px;
+  scroll-margin-top: 120px;
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cancer-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cancer-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid #f4d3e2;
+  padding-bottom: 10px;
+}
+
+.icono-cancer {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  color: #d65a94;
+}
+
+.icono-cancer svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cancer-header h3 {
+  color: #b23d74;
+  font-size: 1.35rem;
+  margin: 0;
+}
+
+.cancer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* --- 2. ACORDEONES / DROPDOWNS DE CÁNCER --- */
+.cancer-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 46px;
+}
+
+/* Se elimina el hover en el contenedor completo para evitar elevar bloques de lectura estáticos */
+.accordion-card {
+  background-color: #ffffff;
+  border: 1px solid #f4d3e2;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(182, 64, 118, 0.06);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.accordion-card[open] {
+  box-shadow: 0 6px 18px rgba(182, 64, 118, 0.1);
+  border-color: #eec1d5;
+}
+
+/* El gatillo interactivo summary */
+.accordion-card summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #b23d74;
+  user-select: none;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accordion-card summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Icono unificado con rotación suave y consistente */
+.accordion-card summary::after {
+  content: "+";
+  font-size: 1.35rem;
+  color: #d65a94;
+  font-weight: 700;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fdf3f7;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.accordion-card[open] summary::after {
+  transform: rotate(45deg);
+  background-color: #d65a94;
+  color: #ffffff;
+}
+
+.accordion-card summary:hover {
+  background-color: #fff8fb;
+}
+
+.accordion-card[open] summary {
+  border-bottom: 1px solid #f4d3e2;
+  background-color: #fff8fb;
+}
+
+/* Contenido con animación fluida slideDown */
+.accordion-card-content {
+  padding: 18px 24px 22px;
+  animation: accordionSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes accordionSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.accordion-card-content p,
+.accordion-card-content ul {
+  color: #715c68;
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.accordion-card-content ul {
+  padding-left: 20px;
+}
+
+.accordion-card-content li {
+  margin-bottom: 8px;
+}
+
+.accordion-card-content li::marker {
+  color: #d65a94;
+}
+
+.cancer-lema {
+  text-align: center;
+  margin-top: 26px;
+  padding: 20px;
+  background: #b14375;
+  border-radius: 20px;
+}
+
+.cancer-lema p {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* --- 3. GLOSARIO MÉDICO --- */
+.glossary-section {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1.2rem;
+}
+
+.glossary-section h2 {
+  text-align: center;
+  color: #a83862;
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.glossary-section .sub {
+  text-align: center;
+  color: #777;
+  font-size: 0.85rem;
+  margin-bottom: 1.8rem;
+}
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.1rem;
+}
+
+.glossary-term {
+  background: #ffffff;
+  border: 1px solid #eed4dd;
+  border-left: 5px solid #a83862;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.glossary-term dt {
+  font-weight: 700;
+  color: #a83862;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.glossary-term dd {
+  margin: 0;
+  font-size: 0.87rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.glossary-note {
+  max-width: 700px;
+  margin: 2rem auto 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* --- 4. RUTA DEL DIAGNÓSTICO (TIMELINE) --- */
+.diagnosis-path {
+  background: linear-gradient(145deg, #5e1c38, #a83862);
+  padding: 3rem 1.2rem;
+  margin: 3rem 0;
+  border-radius: 24px;
+}
+
+.diagnosis-path h2 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.diagnosis-path .sub {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+  margin-bottom: 2.2rem;
+}
+
+.timeline {
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.timeline-step {
+  flex: 1 1 170px;
+  max-width: 200px;
+  text-align: center;
+  padding: 0 0.8rem;
+  position: relative;
+}
+
+.timeline-step .step-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #a83862;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.7rem;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-step h4 {
+  color: #ffffff;
+  font-size: 0.92rem;
+  margin: 0 0 0.4rem 0;
+}
+
+.timeline-step p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* --- 5. ESTADÍSTICAS Y ELEMENTOS DE INTRODUCCIÓN AL CÁNCER --- */
+.quick-stats,
+.intro-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  padding: 0 1rem;
+}
+
+.stat-box {
+  flex: 1 1 220px;
+  max-width: 260px;
+  background: #ffffff;
+  border: 2px solid #a83862;
+  border-radius: 14px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(168, 56, 98, 0.15);
+}
+
+.stat-box .stat-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.stat-box .stat-number {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #a83862;
+  display: block;
+}
+
+.stat-box .stat-label {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.card-icon {
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 1.2rem;
+}
+
+.Start ul li {
+  list-style: none;
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.Start ul li::before {
+  content: "⚠️";
+  position: absolute;
+  left: 0;
+}
+
+/* Tarjeta flip card en intro cáncer */
+.flip-card {
+  perspective: 1200px;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner,
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(145deg, #a83862, #5e1c38);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.8rem;
+  gap: 0.6rem;
+}
+
+.flip-card-back .flip-icon {
+  font-size: 2rem;
+}
+
+.flip-card-back p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.flip-hint {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .cancer-grid {
+    grid-template-columns: 1fr;
+  }
+}

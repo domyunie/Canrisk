@@ -7,121 +7,97 @@
     <link rel="stylesheet" href="../../CSS/Style-Info.css">
     <link rel="icon" type="image/png" href="../../MULTIMEDIA/Canrisk LOGO.svg">
     <style>
-        /* FLIP CARD  */
-        .flip-card {
-            perspective: 1200px;
-            width: 100%;
-            height: 100%;
-            min-height: 320px;
-            cursor: pointer;
+   
+        strong, b {
+            color: #a83862 !important;
         }
- 
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            min-height: 320px;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
+        .info-grid {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            justify-content: space-between !important;
+            align-items: stretch !important;
+            gap: 15px !important;
+            width: 100% !important;
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow-x: hidden !important;
+            padding: 10px 0;
+            box-sizing: border-box !important;
         }
- 
-        .flip-card.flipped .flip-card-inner,
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
+
+        .info-grid .info-card {
+            flex: 1 1 0px !important;
+            min-width: 0 !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-start !important;
         }
- 
-        .flip-card-front,
-        .flip-card-back {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 14px;
-            overflow: hidden;
+
+        .awareness-banner {
+            max-width: 1100px;
+            margin: 3.5rem auto;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #fdf5f7 100%);
+            border: 1px solid #eed4dd;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
         }
- 
-        .flip-card-front img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-        }
- 
-        .flip-card-back {
-            transform: rotateY(180deg);
-            background: linear-gradient(145deg, #a83862, #5e1c38);
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+
+        .awareness-header {
             text-align: center;
-            padding: 1.8rem;
-            gap: 0.6rem;
+            margin-bottom: 2rem;
         }
- 
-        .flip-card-back .flip-icon {
-            font-size: 2rem;
+
+        .awareness-header h2 {
+            color: #a83862;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
         }
- 
-        .flip-card-back p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin: 0;
+
+        .awareness-header p {
+            color: #666;
+            font-size: 0.9rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
- 
-        .flip-hint {
-            display: block;
-            margin-top: 0.6rem;
-            font-size: 0.8rem;
-            text-align: center;
-            opacity: 0.7;
-        }
- 
-        /* QUICK STATS BLOCK */
-        .quick-stats {
+
+        .stats-grid {
             display: flex;
             flex-wrap: wrap;
+            gap: 1.5rem;
             justify-content: center;
-            gap: 1.2rem;
-            margin: 2rem auto;
-            max-width: 1000px;
-            padding: 0 1rem;
         }
- 
+
         .stat-box {
-            flex: 1 1 220px;
-            max-width: 260px;
-            background: #fff;
-            border: 2px solid #a83862;
-            border-radius: 14px;
-            padding: 1.2rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(168, 56, 98, 0.15);
+            flex: 1 1 280px;
+            max-width: 330px;
+            background: #ffffff;
+            border-left: 4px solid #a83862;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
         }
- 
-        .stat-box .stat-icon {
+
+        .stat-number {
             font-size: 1.8rem;
-            display: block;
-            margin-bottom: 0.4rem;
-        }
- 
-        .stat-box .stat-number {
-            font-size: 1.6rem;
             font-weight: 700;
             color: #a83862;
-            display: block;
+            margin-bottom: 0.3rem;
         }
- 
-        .stat-box .stat-label {
+
+        .stat-box h4 {
+            font-size: 1rem;
+            color: #a83862 !important; 
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-box p {
             font-size: 0.85rem;
             color: #555;
-        }
- 
-        /* ICONS IN TITLES */
-        .info-card h3 .card-icon {
-            margin-right: 0.4rem;
+            line-height: 1.45;
+            margin: 0;
         }
     </style>
 </head>
@@ -187,83 +163,80 @@
         </div>
  
     </nav>
- 
-    <!-- PAGE HEADER -->
+    <!-- ===== ENCABEZADO DE LA PÁGINA ===== -->
     <div class="Titulos">
-        <h1>Awareness Quiz</h1>
+        <h1>Awareness Questionnaire</h1>
     </div>
     <br>
     <div class="fila-texto-img">
         <div class="content-text">
             <div class="Start">
-                <p>How much do we really know about cancer? This quiz aims to assess the general level of information and understanding the community has about the disease, its definitions, and key preventive habits.</p>
-                <br>
-                <p>Your participation helps us identify critical areas where more educational content is needed, understand people's relationship with medical check-ups, and strengthen collective empathy.</p>
-            </div>
+           <p>How much do we really know about cancer? This questionnaire aims to assess the community's level of information and general understanding about the disease, its definitions, and key preventative habits.</p>
+           <br>
+           <p>Your participation helps us identify critical areas where greater dissemination of educational content is needed, understand people's relationship with medical checkups, and strengthen collective empathy.</p>
+</div>
         </div>
- 
+
         <div class="IMG">
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="../../MULTIMEDIA/cancer img.2.jpe" alt="Evaluación de conocimiento sobre el cáncer" class="IMG-TXT">
-                    </div>
-                    <div class="flip-card-back">
-                        <span class="flip-icon">📝</span>
-                        <p>Your answers are completely anonymous and only take a few minutes. Each piece of data collected helps us improve cancer education in the community.</p>
-                    </div>
-                </div>
-            <span class="flip-hint">Hover over the image for more info</span>
-            </div>
+            <img src="../../MULTIMEDIA/cancer img.2.jpe" alt="Evaluación de conocimiento sobre el cáncer" class="IMG-TXT">
         </div>
     </div>
- 
-    <!-- QUICK FACTS -->
-    <div class="quick-stats">
-        <div class="stat-box">
-            <span class="stat-icon">🗂️</span>
-            <span class="stat-number">4</span>
-            <span class="stat-label">categories assessed in the quiz</span>
-        </div>
-        <div class="stat-box">
-            <span class="stat-icon">⏱️</span>
-            <span class="stat-number">~5 min</span>
-            <span class="stat-label">estimated time to complete it</span>
-        </div>
-        <div class="stat-box">
-            <span class="stat-icon">🔒</span>
-            <span class="stat-number">100%</span>
-            <span class="stat-label">anonymous with no sensitive data</span>
-        </div>
-    </div>
- 
+
     <div class="action-container">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeA_wRqpODvoCKK3eUJ1uvN3IjVLjKseehsvB1lB7wfm2d04A/viewform?usp=publish-editor" target="_blank" class="btn-quizz">
-            Answer the Questionnaire on Google Forms &rarr;
+           Answer the questionnaire in Google Forms &rarr;
         </a>
     </div>
- 
+
     <div class="info-grid">
         <div class="info-card">
-            <h3>Concept and Real Knowledge</h3>
-            <p>What is cancer to you? We analyze your self-perception of the disease, measuring whether you consider yourself poorly, moderately, or well informed about its implications.</p>
+           <h3>Concept and Real Knowledge</h3>
+           <p>What does cancer mean to you? We analyze your self-perception of the disease, measuring whether you consider yourself poorly, moderately, or well-informed about its implications.</p>
         </div>
- 
+
         <div class="info-card">
-            <h3>Prevention and Medical Routine</h3>
-            <p>Prevention saves lives. We track how often people get regular medical check-ups to gauge their level of proactivity in caring for their health.</p>
+           <h3>Prevention and Medical Routine</h3>
+           <p>Prevention saves lives. We record how often people get regular medical checkups to assess their level of proactivity in healthcare.</p>
         </div>
- 
+
         <div class="info-card">
             <h3>Hospital Environment and Interest</h3>
-            <p>We assess whether users are aware of medical centers specialized in oncology treatment and measure their interest in continuing to learn in order to support their loved ones.</p>
+            <p>We assess whether users are familiar with medical centers specializing in cancer treatments and measure their interest in continuing to seek information to support their loved ones.</p>
         </div>
- 
+
         <div class="info-card">
             <h3>Empathy and Support</h3>
-            <p>We seek to understand the human and social side of the process, analyzing people's willingness to accompany, visit, and understand the daily life of a patient in treatment.</p>
+            <p>We seek to understand the human and social perspective of the process, analyzing the individual's willingness to accompany, visit, and understand the daily life of a patient in treatment.</p>
         </div>
     </div>
+
+    <!-- ===== SECCIÓN DE DATOS DE CONCIENTIZACIÓN ===== -->
+    <section class="awareness-banner">
+        <div class="awareness-header">
+           <h2>Why is it vital to be informed?</h2>
+           <p>Misinformation remains one of the main barriers to early detection and effective support.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">30% - 50%</div>
+                <h4>Preventable Cases</h4>
+                <p>Between one-third and one-half of all cancer cases can be prevented by adopting healthy lifestyles and avoiding known risk factors.</p>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-number">Early Detection</div>
+              <h4>Greater Effectiveness</h4>
+              <p>Identifying the disease in its early stages significantly increases the chances of successful treatment and recovery.</p>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-number">Support Network</div>
+                <h4>Emotional Impact</h4>
+                <p>Having a well-informed family and community support network significantly reduces stress and anxiety during the patient's journey.</p>
+            </div>
+        </div>
+    </section>
  
 <!-- FOOTER -->
     <footer>
